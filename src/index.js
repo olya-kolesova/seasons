@@ -18,14 +18,13 @@ import ReactDOM from 'react-dom';
     };
 
     render() {
-
-      return (
-        <div>
-          Latitude: {this.state.lat}
-          <br />
-          Error: {this.state.errorMessage}
-        </div>
-      );
+      if (this.state.errorMessage && !this.state.lat) {
+        return <div>Error: {this.state.errorMessage}</div>;
+      }
+      if (this.state.lat && !this.state.errorMessage) {
+        return <div>Message: {this.state.lat}</div>;
+      }
+      return <div>Loading!</div>;
     }
   }
 
