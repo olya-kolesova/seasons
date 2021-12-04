@@ -16,15 +16,23 @@ import Spinner from './Spinner';
       );
     }
 
-    render() {
+    renderContent() {
       if (this.state.errorMessage && !this.state.lat) {
         return <div>Error: {this.state.errorMessage}</div>;
       }
       if (this.state.lat && !this.state.errorMessage) {
-        return <SeasonDisplay lat={this.state.lat}/>;
+        return <SeasonDisplay lat={this.state.lat} />;
       }
-      return <Spinner message="Please accept location request"/>;
-    }
-  }
+      return <Spinner message="Please accept location request" />;
+    };
+
+    render() {
+      return (
+        <div className="border red">
+          {this.renderContent()}
+        </div>
+      );
+    };
+  };
 
 ReactDOM.render (<App/>, document.querySelector('#root'));
